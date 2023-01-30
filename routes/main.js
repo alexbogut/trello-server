@@ -12,6 +12,10 @@ const prisma = new PrismaClient();
 const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
 
+router.get("/api", async (req, res) => {
+  res.send('Hello There')
+ })
+
 router.post("/auth/login", requireSignin, Authentication.signin);
 
 router.get("/auth/current_user", requireAuth, async (req, res) => {
